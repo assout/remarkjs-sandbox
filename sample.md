@@ -28,3 +28,9 @@ class: center, middle
 
 - test 3
 
+```java
+public static void main() {
+    System.out.println("hello world!");
+}
+```
+
