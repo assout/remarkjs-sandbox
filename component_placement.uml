@@ -1,0 +1,14 @@
+@startuml
+
+package "クライアント PC" <<Node>> {
+    [勤怠入力]
+}
+ 
+package "サーバー" <<Node>> {
+    [勤怠入力] - [CGI] : <<HTTP>>
+} 
+
+package "データベース" <<Database>> {
+    [CGI] ..> [DB]
+}
+@enduml

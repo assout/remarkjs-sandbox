@@ -1,0 +1,30 @@
+@startuml
+title <size:18>状態遷移図のサンプル</size>
+
+[*] --> 停止
+停止 -> 稼働中 : 電源 ON
+state 稼働中 {
+    [*] --> 加熱中
+    加熱中 --> 待機 : when( 現在温度 > 上限温度 )
+    待機 --> 加熱中 : when( 現在温度 < 下限温度 )
+
+    加熱中: entry / ヒーター ON
+    加熱中: do / 温度監視
+    加熱中: exit / ヒーター OFF
+
+    待機: do / 温度監視
+
+    --
+
+    state "加湿 ON" as w_on
+    state "加湿 OFF" as w_off
+    [*] --> w_on
+    w_on --> w_off
+    w_off --> w_on
+}
+稼働中 --> 停止 : 電源 OFF
+停止 --> [*]
+
+note bottom of 稼働中 : 加湿器付きヒーター
+
+@enduml
