@@ -3,6 +3,7 @@
 ## How to run
 
     markdown-to-slides sample.md -o sample.html
+    markdown-to-slides sample.md -o sample.html -s custom.css
 
 ## Refs
 
